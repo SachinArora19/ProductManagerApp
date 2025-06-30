@@ -1,0 +1,28 @@
+﻿<div class="top-row ps-3 navbar navbar-dark bg-gradient">
+    <div class="container-fluid">
+        <a class="navbar-brand fw-bold" href="">
+            <span class="bi bi-layers-fill me-2 text-warning"></span>
+            Product<span class="text-warning">Hub</span>
+        </a>
+    </div>
+</div>
+
+<input type="checkbox" title="Navigation menu" class="navbar-toggler" />
+
+<div class="nav-scrollable" onclick="document.querySelector('.navbar-toggler').click()">
+    <nav class="flex-column">
+        <div class="nav-item px-3 mb-2">
+            <NavLink class="nav-link rounded-3 d-flex align-items-center py-3" href="" Match="NavLinkMatch.All">
+                <span class="bi bi-house-door-fill me-3 fs-5 text-primary" aria-hidden="true"></span> 
+                <span class="fw-medium">Dashboard</span>
+            </NavLink>
+        </div>
+
+        <div class="nav-item px-3 mb-2">
+            <NavLink class="nav-link rounded-3 d-flex align-items-center py-3" href="products">
+                <span class="bi bi-box-seam-fill me-3 fs-5 text-success" aria-hidden="true"></span> 
+                <span class="fw-medium">Products</span>
+            </NavLink>
+        </div>
+    </nav>
+</div>

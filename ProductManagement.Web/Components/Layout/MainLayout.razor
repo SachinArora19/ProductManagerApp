@@ -1,0 +1,49 @@
+﻿@inherits LayoutComponentBase
+
+<div class="page">
+    <div class="sidebar">
+        <NavMenu />
+    </div>
+
+    <main>
+        <div class="top-row px-4 d-flex justify-content-between align-items-center">
+            <div class="breadcrumb-section">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb mb-0">
+                        <li class="breadcrumb-item">
+                            <span class="bi bi-house-door me-1"></span>
+                            ProductHub
+                        </li>
+                    </ol>
+                </nav>
+            </div>
+            <div class="header-actions">
+                <a href="https://learn.microsoft.com/aspnet/core/" target="_blank" class="btn btn-outline-secondary btn-sm rounded-pill">
+                    <span class="bi bi-question-circle me-1"></span>
+                    Documentation
+                </a>
+            </div>
+        </div>
+
+        <article class="content px-4">
+            @Body
+        </article>
+        
+        <footer class="mt-auto py-3 text-center">
+            <div class="container">
+                <small class="text-muted">
+                    Made with ❤️ by <strong>Sachin Arora</strong> & 
+                    <span class="text-primary">Claude Sonnet 3.5</span> 🤖
+                    <br>
+                    <em>Powered by coffee, .NET magic, and way too many gradients</em>
+                </small>
+            </div>
+        </footer>
+    </main>
+</div>
+
+<div id="blazor-error-ui">
+    An unhandled error has occurred.
+    <a href="" class="reload">Reload</a>
+    <a class="dismiss">🗙</a>
+</div>
