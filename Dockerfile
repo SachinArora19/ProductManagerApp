@@ -2,7 +2,7 @@
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 WORKDIR /source
 
-# Copy project files
+# Copy project files (including Tests project to satisfy solution file)
 COPY ProductManagement.sln .
 COPY ProductManagement.Models/*.csproj ./ProductManagement.Models/
 COPY ProductManagement.Data/*.csproj ./ProductManagement.Data/
@@ -10,16 +10,18 @@ COPY ProductManagement.ApiService/*.csproj ./ProductManagement.ApiService/
 COPY ProductManagement.Web/*.csproj ./ProductManagement.Web/
 COPY ProductManagement.ServiceDefaults/*.csproj ./ProductManagement.ServiceDefaults/
 COPY ProductManagement.AppHost/*.csproj ./ProductManagement.AppHost/
+COPY ProductManagement.Tests/*.csproj ./ProductManagement.Tests/
 
-# Restore dependencies
-RUN dotnet restore
+# Restore dependencies for production projects only (exclude tests)
+RUN dotnet restore ProductManagement.ApiService
+RUN dotnet restore ProductManagement.Web
 
 # Copy source code
 COPY . .
 
-# Build the application
-RUN dotnet publish ProductManagement.Web -c Release -o /app/web
-RUN dotnet publish ProductManagement.ApiService -c Release -o /app/api
+# Build the application (production projects only)
+RUN dotnet publish ProductManagement.Web -c Release -o /app/web --no-restore
+RUN dotnet publish ProductManagement.ApiService -c Release -o /app/api --no-restore
 
 # Runtime stage for Web
 FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS web

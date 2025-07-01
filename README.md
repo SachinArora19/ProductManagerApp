@@ -145,17 +145,17 @@ git --version
 
 ## 🚀 Quick Start Guide (New Machine Setup)
 
-### Method 1: Docker Compose Setup (Recommended - 5 Minutes)
+Docker Compose Setup (Recommended - 5 Minutes)
 
 This is the **easiest and fastest** way to get the application running on any new machine:
 
 ```bash
 # 1. Clone the repository
 git clone <your-repository-url>
-cd BlazorPostgressDapper_TestApp
+cd ProductManagerApp
 
 # 2. Start PostgreSQL database
-docker-compose up -d postgres
+docker-compose up
 
 # 3. Verify database is running
 docker ps
@@ -168,57 +168,9 @@ dotnet restore
 dotnet run --project ProductManagement.AppHost
 
 # 6. Open your browser and go to:
-# - Aspire Dashboard: http://localhost:15888
-# - Web Application: http://localhost:5042
-# - API: http://localhost:5141
-```
-
-### Method 2: Full Docker Setup (No .NET Required)
-
-If you prefer to run everything in Docker containers:
-
-```bash
-# 1. Clone the repository
-git clone <your-repository-url>
-cd BlazorPostgressDapper_TestApp
-
-# 2. Run everything in Docker
-docker-compose -f docker-compose.full.yml up --build
-
-# 3. Access the application:
-# - Web Application: http://localhost:5062
-# - API: http://localhost:5595
-# - Database: localhost:5432
-```
-
-### Method 3: Manual Setup (Development)
-
-For development with local .NET installation:
-
-```bash
-# 1. Clone the repository
-git clone <your-repository-url>
-cd BlazorPostgressDapper_TestApp
-
-# 2. Start PostgreSQL (choose one option):
-
-# Option A: Using provided Docker Compose
-docker-compose up -d postgres
-
-# Option B: Using standalone Docker
-docker run --name productmanagement-postgres \
-  -e POSTGRES_DB=productmanagement \
-  -e POSTGRES_USER=postgres \
-  -e POSTGRES_PASSWORD=postgres \
-  -p 5432:5432 \
-  -d postgres:16
-
-# 3. Restore dependencies and build
-dotnet restore
-dotnet build
-
-# 4. Run the application
-dotnet run --project ProductManagement.AppHost
+# - Aspire Dashboard: https://localhost:17052
+# - Web Application: https://localhost:7293/products
+# - API: https://localhost:7524/products
 ```
 
 ## 🔍 Verification & Access
@@ -226,16 +178,12 @@ dotnet run --project ProductManagement.AppHost
 ### Check Everything is Working
 
 1. **Verify Database Connection:**
-   ```bash
-   # Test API database connection
-   curl http://localhost:5141/test-connection
-   # Should return: "Database connection successful!"
-   ```
+   - Connect to PostgreSQL using pgAdmin or any SQL client
 
 2. **Access Application URLs:**
-   - **🎛️ Aspire Dashboard:** http://localhost:15888 (Service monitoring)
-   - **🌐 Web Application:** http://localhost:5042 (Main ProductHub app)
-   - **⚡ API Endpoints:** http://localhost:5141 (REST API)
+   - **🎛️ Aspire Dashboard:** https://localhost:17052 (Service monitoring)
+   - **🌐 Web Application:** https://localhost:7293 (Main ProductHub app)
+   - **⚡ API Endpoints:** https://localhost:7524/products (GetAllProducts API)
    - **🗄️ Database Admin:** http://localhost:8080 (pgAdmin, if using docker-compose)
 
 3. **Test Application Features:**
@@ -246,9 +194,9 @@ dotnet run --project ProductManagement.AppHost
    - Verify data persists after refresh
 
 ### Expected Ports
-- **Web App**: 5042 (HTTP) / 7042 (HTTPS)
-- **API Service**: 5141 (HTTP) / 7141 (HTTPS) 
-- **Aspire Dashboard**: 15888
+- **Web App**: 7524 (HTTPS)
+- **API Service**: 7293 (HTTPS) 
+- **Aspire Dashboard**: 17052
 - **PostgreSQL**: 5432
 - **pgAdmin**: 8080 (optional)
 

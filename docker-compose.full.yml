@@ -44,6 +44,8 @@ services:
     container_name: productmanagement-web
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
+      - services__apiservice__https__0=https://api:8081
+      - services__apiservice__http__0=http://api:8081
     ports:
       - "5062:8080"
     depends_on:
