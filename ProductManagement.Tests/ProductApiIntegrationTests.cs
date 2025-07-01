@@ -17,22 +17,22 @@ public class ProductApiIntegrationTests : IClassFixture<WebApplicationFactory<Pr
 
     public ProductApiIntegrationTests(WebApplicationFactory<Program> factory)
     {
-        _testDbName = $"test_{Guid.NewGuid():N}.db";
+        _testDbName = $"test_db_{Guid.NewGuid():N}";
         
         _factory = factory.WithWebHostBuilder(builder =>
         {
             builder.ConfigureAppConfiguration((context, config) =>
             {
-                // Use unique SQLite database for each test instance
+                // Use test PostgreSQL database
                 config.AddInMemoryCollection(new Dictionary<string, string?>
                 {
-                    ["ConnectionStrings:productmanagement"] = $"Data Source={_testDbName}"
+                    ["ConnectionStrings:productmanagement"] = $"Host=localhost;Port=5432;Database={_testDbName};Username=postgres;Password=postgres;"
                 });
             });
 
             builder.ConfigureServices(services =>
             {
-                // Replace PostgreSQL repository with SQLite for testing
+                // Use PostgreSQL for testing (ensure clean test database)
                 var descriptor = services.SingleOrDefault(d => d.ServiceType == typeof(IProductRepository));
                 if (descriptor != null)
                 {
@@ -45,8 +45,8 @@ public class ProductApiIntegrationTests : IClassFixture<WebApplicationFactory<Pr
                     services.Remove(dbDescriptor);
                 }
                 
-                services.AddScoped<IProductRepository, SqliteProductRepository>();
-                services.AddScoped<IDatabaseInitializer, SqliteDatabaseInitializer>();
+                services.AddScoped<IProductRepository, ProductRepository>();
+                services.AddScoped<IDatabaseInitializer, DatabaseInitializer>();
             });
         });
 
@@ -74,18 +74,8 @@ public class ProductApiIntegrationTests : IClassFixture<WebApplicationFactory<Pr
         _client?.Dispose();
         _factory?.Dispose();
         
-        // Clean up test database
-        if (File.Exists(_testDbName))
-        {
-            try
-            {
-                File.Delete(_testDbName);
-            }
-            catch
-            {
-                // Ignore cleanup errors
-            }
-        }
+        // Note: Test database cleanup should be handled by test infrastructure
+        // In production scenarios, consider using database transactions or cleanup scripts
     }
 
     [Fact]

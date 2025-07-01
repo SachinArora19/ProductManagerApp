@@ -1,49 +1,70 @@
-﻿@inherits LayoutComponentBase
+﻿@* 🏗️ MainLayout - The architectural masterpiece that holds our beautiful app together! Built with love, Bootstrap, and way too much CSS 🏗️ *@
+@inherits LayoutComponentBase
 
 <div class="page">
     <div class="sidebar">
         <NavMenu />
     </div>
 
-    <main>
-        <div class="top-row px-4 d-flex justify-content-between align-items-center">
-            <div class="breadcrumb-section">
-                <nav aria-label="breadcrumb">
-                    <ol class="breadcrumb mb-0">
-                        <li class="breadcrumb-item">
-                            <span class="bi bi-house-door me-1"></span>
-                            ProductHub
-                        </li>
-                    </ol>
-                </nav>
-            </div>
-            <div class="header-actions">
-                <a href="https://learn.microsoft.com/aspnet/core/" target="_blank" class="btn btn-outline-secondary btn-sm rounded-pill">
-                    <span class="bi bi-question-circle me-1"></span>
-                    Documentation
-                </a>
+    <main class="main-content">
+        <div class="top-bar">
+            <div class="d-flex justify-content-between align-items-center">
+                <div class="d-flex align-items-center">
+                    <button class="btn btn-link d-md-none sidebar-toggle" onclick="toggleSidebar()">
+                        <i class="bi bi-list fs-4"></i>
+                    </button>
+                    <span class="text-muted">Modern Product Management</span>
+                </div>
+                <div class="d-flex align-items-center gap-3">
+                    <a href="https://github.com/dotnet/aspire" target="_blank" class="btn btn-sm btn-outline-primary rounded-pill">
+                        <i class="bi bi-github me-1"></i> .NET Aspire
+                    </a>
+                    <a href="https://learn.microsoft.com/aspnet/core/blazor/" target="_blank" class="btn btn-sm btn-outline-info rounded-pill">
+                        <i class="bi bi-lightning-charge me-1"></i> Blazor Docs
+                    </a>
+                </div>
             </div>
         </div>
 
-        <article class="content px-4">
+        <article class="content">
             @Body
         </article>
-        
-        <footer class="mt-auto py-3 text-center">
-            <div class="container">
-                <small class="text-muted">
-                    Made with ❤️ by <strong>Sachin Arora</strong> & 
-                    <span class="text-primary">Claude Sonnet 3.5</span> 🤖
-                    <br>
-                    <em>Powered by coffee, .NET magic, and way too many gradients</em>
-                </small>
+
+        <footer class="footer mt-auto py-4">
+            <div class="container-fluid">
+                <div class="row align-items-center">
+                    <div class="col-md-6">
+                        <p class="mb-0 text-muted">
+                            <i class="bi bi-heart-fill text-danger me-1"></i>
+                            Crafted with caffeine and determination by the ProductHub Team
+                        </p>
+                    </div>
+                    <div class="col-md-6 text-md-end">
+                        <p class="mb-0 text-muted">
+                            Powered by 
+                            <span class="fw-semibold text-primary">.NET Aspire</span>, 
+                            <span class="fw-semibold text-info">Blazor</span> & 
+                            <span class="fw-semibold text-success">PostgreSQL</span>
+                            <i class="bi bi-rocket-takeoff ms-1 text-warning"></i>
+                        </p>
+                    </div>
+                </div>
             </div>
         </footer>
     </main>
 </div>
 
 <div id="blazor-error-ui">
-    An unhandled error has occurred.
-    <a href="" class="reload">Reload</a>
-    <a class="dismiss">🗙</a>
+    <div class="error-content">
+        <i class="bi bi-exclamation-triangle-fill text-warning me-2"></i>
+        An unhandled error has occurred.
+        <a href="" class="reload">Reload</a>
+        <a class="dismiss">🗙</a>
+    </div>
 </div>
+
+<script>
+    function toggleSidebar() {
+        document.querySelector('.page').classList.toggle('sidebar-open');
+    }
+</script>

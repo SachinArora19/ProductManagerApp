@@ -1,182 +1,77 @@
-﻿@*
-    ProductHub Dashboard - Where Magic Happens ✨
-    
-    Built by: Sachin Arora (The Human) 👨‍💻
-    "Assisted" by: Claude Sonnet 3.5 (The AI That Dreams of Electric Gradients) 🤖
-    
-    Fun Fact: This page has more gradients than a 90s website, but somehow it looks good!
-    Claude's Contribution: 47 different gradient combinations (we used 3)
-    Sachin's Contribution: Common sense and coffee-fueled decision making
-*@
-
+﻿@* 🎉 Welcome to ProductHub - Where products meet their destiny! Built with love, caffeine, and probably too many Stack Overflow visits 🎉 *@
 @page "/"
 
 <PageTitle>ProductHub - Dashboard</PageTitle>
 
-<div class="hero-section mb-5">
+<div class="hero-section">
     <div class="container">
-        <div class="row align-items-center">
+        <div class="row justify-content-center text-center">
             <div class="col-lg-8">
-                <h1 class="display-3 fw-bold text-gradient mb-3">
-                    Welcome to <span class="text-warning">ProductHub</span>
-                </h1>
-                <p class="lead fs-4 mb-4 text-muted">
-                    Your modern product management solution built with cutting-edge technology stack for maximum performance and scalability.
-                </p>
-                <a href="/products" class="btn btn-primary btn-lg rounded-pill px-4 py-3 shadow-lg">
-                    <span class="bi bi-rocket-takeoff me-2"></span>
-                    Get Started
-                </a>
-            </div>
-            <div class="col-lg-4 text-center">
-                <div class="feature-icon-large">
-                    <span class="bi bi-layers-fill"></span>
+                <div class="hero-content">
+                    <h1 class="display-4 fw-bold mb-4">
+                        <span class="text-gradient">Welcome to ProductHub</span>
+                        <span class="wave-emoji">👋</span>
+                    </h1>
+                    <p class="lead mb-5 text-muted">
+                        Your modern, blazing-fast product management solution built with 
+                        <span class="fw-semibold text-primary">.NET Aspire</span>, 
+                        <span class="fw-semibold text-info">Blazor</span>, and 
+                        <span class="fw-semibold text-success">PostgreSQL</span>
+                    </p>
+                    
+                    <div class="d-flex gap-3 justify-content-center flex-wrap">
+                        <a href="/products" class="btn btn-primary btn-lg px-5 py-3 rounded-pill shadow-lg">
+                            <i class="bi bi-box-seam-fill me-2"></i>
+                            Manage Products
+                        </a>
+                        <button class="btn btn-outline-secondary btn-lg px-5 py-3 rounded-pill" onclick="scrollToFeatures()">
+                            <i class="bi bi-info-circle me-2"></i>
+                            Learn More
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
 
-<div class="container">
-    <div class="row g-4">
-        <div class="col-lg-8">
-            <div class="card border-0 shadow-lg h-100 gradient-card">
-                <div class="card-body p-4">
-                    <div class="d-flex align-items-center mb-3">
-                        <div class="icon-wrapper me-3">
-                            <span class="bi bi-box-seam-fill fs-3"></span>
-                        </div>
-                        <div>
-                            <h4 class="card-title mb-1 fw-bold">Product Management</h4>
-                            <p class="text-muted mb-0">Complete CRUD operations</p>
-                        </div>
-                    </div>
-                    <p class="card-text mb-4">
-                        Efficiently manage your entire product inventory with our intuitive interface. 
-                        Create, view, edit, and delete products with real-time data persistence in PostgreSQL.
-                    </p>
-                    <div class="row g-3 mb-4">
-                        <div class="col-6">
-                            <div class="feature-item">
-                                <span class="bi bi-check-circle-fill text-success me-2"></span>
-                                <small>Real-time Updates</small>
-                            </div>
-                        </div>
-                        <div class="col-6">
-                            <div class="feature-item">
-                                <span class="bi bi-check-circle-fill text-success me-2"></span>
-                                <small>Data Validation</small>
-                            </div>
-                        </div>
-                        <div class="col-6">
-                            <div class="feature-item">
-                                <span class="bi bi-check-circle-fill text-success me-2"></span>
-                                <small>Search & Filter</small>
-                            </div>
-                        </div>
-                        <div class="col-6">
-                            <div class="feature-item">
-                                <span class="bi bi-check-circle-fill text-success me-2"></span>
-                                <small>Responsive Design</small>
-                            </div>
-                        </div>
-                    </div>
-                    <a href="/products" class="btn btn-outline-primary rounded-pill">
-                        <span class="bi bi-arrow-right me-1"></span>
-                        Manage Products
-                    </a>
-                </div>
+<div class="features-section" id="features">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center mb-5">
+                <h2 class="fw-bold">Why Choose ProductHub?</h2>
+                <p class="text-muted">Built with modern technologies and best practices</p>
             </div>
         </div>
         
-        <div class="col-lg-4">
-            <div class="card border-0 shadow-lg h-100 tech-stack-card">
-                <div class="card-body p-4">
-                    <div class="d-flex align-items-center mb-3">
-                        <div class="icon-wrapper me-3">
-                            <span class="bi bi-cpu-fill fs-3 text-info"></span>
-                        </div>
-                        <h5 class="card-title mb-0 fw-bold">Tech Stack</h5>
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="feature-card">
+                    <div class="feature-icon bg-primary">
+                        <i class="bi bi-lightning-charge-fill"></i>
                     </div>
-                    <div class="tech-stack-list">
-                        <div class="tech-item">
-                            <span class="bi bi-lightning-charge-fill text-primary me-2"></span>
-                            <span>.NET 8 Aspire</span>
-                        </div>
-                        <div class="tech-item">
-                            <span class="bi bi-window-stack text-info me-2"></span>
-                            <span>Blazor Server</span>
-                        </div>
-                        <div class="tech-item">
-                            <span class="bi bi-hdd-network-fill text-success me-2"></span>
-                            <span>FastEndpoints API</span>
-                        </div>
-                        <div class="tech-item">
-                            <span class="bi bi-database-fill text-primary me-2"></span>
-                            <span>PostgreSQL</span>
-                        </div>
-                        <div class="tech-item">
-                            <span class="bi bi-gear-fill text-warning me-2"></span>
-                            <span>Dapper ORM</span>
-                        </div>
-                        <div class="tech-item">
-                            <span class="bi bi-bootstrap-fill text-purple me-2"></span>
-                            <span>Bootstrap 5</span>
-                        </div>
-                    </div>
+                    <h4>Blazing Fast</h4>
+                    <p class="text-muted">Built with Blazor Server-Side Rendering for optimal performance and SEO.</p>
                 </div>
             </div>
-        </div>
-    </div>
-    
-    <div class="row mt-5">
-        <div class="col-12">
-            <div class="stats-section">
-                <div class="row g-4">
-                    <div class="col-md-3">
-                        <div class="stat-card">
-                            <div class="stat-icon">
-                                <span class="bi bi-box-seam-fill"></span>
-                            </div>
-                            <div class="stat-content">
-                                <h3 class="stat-number">∞</h3>
-                                <p class="stat-label">Products</p>
-                            </div>
-                        </div>
+            
+            <div class="col-md-4">
+                <div class="feature-card">
+                    <div class="feature-icon bg-success">
+                        <i class="bi bi-shield-check-fill"></i>
                     </div>
-                    <div class="col-md-3">
-                        <div class="stat-card">
-                            <div class="stat-icon">
-                                <span class="bi bi-lightning-charge-fill"></span>
-                            </div>
-                            <div class="stat-content">
-                                <h3 class="stat-number">99.9%</h3>
-                                <p class="stat-label">Uptime</p>
-                            </div>
-                        </div>
+                    <h4>Production Ready</h4>
+                    <p class="text-muted">Comprehensive validation, error handling, and security best practices.</p>
+                </div>
+            </div>
+            
+            <div class="col-md-4">
+                <div class="feature-card">
+                    <div class="feature-icon bg-info">
+                        <i class="bi bi-gear-fill"></i>
                     </div>
-                    <div class="col-md-3">
-                        <div class="stat-card">
-                            <div class="stat-icon">
-                                <span class="bi bi-shield-check-fill"></span>
-                            </div>
-                            <div class="stat-content">
-                                <h3 class="stat-number">100%</h3>
-                                <p class="stat-label">Secure</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="stat-card">
-                            <div class="stat-icon">
-                                <span class="bi bi-speedometer2"></span>
-                            </div>
-                            <div class="stat-content">
-                                <h3 class="stat-number">Fast</h3>
-                                <p class="stat-label">Performance</p>
-                            </div>
-                        </div>
-                    </div>
+                    <h4>Modern Stack</h4>
+                    <p class="text-muted">.NET Aspire, FastEndpoints, Dapper, and PostgreSQL working in harmony.</p>
                 </div>
             </div>
         </div>
@@ -187,121 +82,96 @@
     .hero-section {
         background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
         color: white;
-        padding: 4rem 0;
-        margin: -1rem -15px 3rem -15px;
-        border-radius: 0 0 2rem 2rem;
+        padding: 8rem 0;
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .hero-section::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="white" opacity="0.1"/><circle cx="75" cy="25" r="1" fill="white" opacity="0.05"/><circle cx="50" cy="50" r="1" fill="white" opacity="0.1"/><circle cx="25" cy="75" r="1" fill="white" opacity="0.05"/><circle cx="75" cy="75" r="1" fill="white" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+        pointer-events: none;
+    }
+    
+    .hero-content {
+        position: relative;
+        z-index: 2;
     }
     
     .text-gradient {
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        background: linear-gradient(45deg, #ffffff, #f8f9fa);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
     }
     
-    .feature-icon-large {
-        width: 150px;
-        height: 150px;
-        background: rgba(255,255,255,0.1);
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin: 0 auto;
-        backdrop-filter: blur(10px);
+    .wave-emoji {
+        display: inline-block;
+        animation: wave 2s infinite;
+        transform-origin: 70% 70%;
     }
     
-    .feature-icon-large .bi {
-        font-size: 4rem;
-        color: #ffc107;
+    @@keyframes wave {
+        0%, 100% { transform: rotate(0deg); }
+        10%, 30% { transform: rotate(14deg); }
+        20% { transform: rotate(-8deg); }
+        40% { transform: rotate(-4deg); }
+        50% { transform: rotate(10deg); }
+        60% { transform: rotate(0deg); }
     }
     
-    .gradient-card {
-        background: linear-gradient(135deg, rgba(102, 126, 234, 0.05) 0%, rgba(118, 75, 162, 0.05) 100%);
-        border-left: 4px solid #667eea;
+    .features-section {
+        padding: 6rem 0;
+        background-color: #f8f9fa;
     }
     
-    .tech-stack-card {
-        background: linear-gradient(135deg, rgba(255, 193, 7, 0.05) 0%, rgba(255, 87, 34, 0.05) 100%);
-        border-left: 4px solid #ffc107;
-    }
-    
-    .icon-wrapper {
-        width: 50px;
-        height: 50px;
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        border-radius: 12px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: white;
-    }
-    
-    .tech-item {
-        padding: 0.5rem 0;
-        border-bottom: 1px solid rgba(0,0,0,0.05);
-        display: flex;
-        align-items: center;
-    }
-    
-    .tech-item:last-child {
-        border-bottom: none;
-    }
-    
-    .feature-item {
-        display: flex;
-        align-items: center;
-    }
-    
-    .stats-section {
-        background: rgba(0,0,0,0.02);
-        padding: 2rem;
-        border-radius: 1rem;
-    }
-    
-    .stat-card {
-        background: white;
-        padding: 1.5rem;
-        border-radius: 1rem;
-        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    .feature-card {
         text-align: center;
-        transition: transform 0.3s ease;
+        padding: 2rem;
+        background: white;
+        border-radius: 1rem;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        height: 100%;
     }
     
-    .stat-card:hover {
+    .feature-card:hover {
         transform: translateY(-5px);
+        box-shadow: 0 8px 30px rgba(0,0,0,0.15);
     }
     
-    .stat-icon {
-        width: 60px;
-        height: 60px;
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    .feature-icon {
+        width: 4rem;
+        height: 4rem;
         border-radius: 50%;
         display: flex;
         align-items: center;
         justify-content: center;
-        margin: 0 auto 1rem;
+        margin: 0 auto 1.5rem;
         color: white;
         font-size: 1.5rem;
     }
     
-    .stat-number {
-        font-size: 2rem;
-        font-weight: bold;
-        margin-bottom: 0.5rem;
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
+    .btn-primary {
+        background: linear-gradient(45deg, #667eea, #764ba2);
+        border: none;
+        transition: all 0.3s ease;
     }
     
-    .stat-label {
-        color: #6c757d;
-        margin-bottom: 0;
-        font-weight: 500;
-    }
-    
-    .text-purple {
-        color: #6f42c1 !important;
+    .btn-primary:hover {
+        background: linear-gradient(45deg, #5a67d8, #6b46a4);
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
     }
 </style>
+
+<script>
+    function scrollToFeatures() {
+        document.getElementById('features').scrollIntoView({ behavior: 'smooth' });
+    }
+</script>

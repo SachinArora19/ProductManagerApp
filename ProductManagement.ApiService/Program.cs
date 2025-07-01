@@ -1,21 +1,12 @@
-/*
- * ProductHub API Service
- * 
- * Crafted with ❤️ by Sachin Arora
- * With "minimal" help from Claude Sonnet 3.5 🤖
- * (Claude insisted on adding glassmorphism to everything - even the API responses!)
- * 
- * Warning: Contains traces of over-engineering and excessive use of gradients
- */
-
 using FastEndpoints;
 using ProductManagement.Data;
 using System.Text.Json;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add service defaults & Aspire components.
-builder.AddServiceDefaults();
+// Add service defaults but skip database configuration
+// Comment out to avoid Aspire overriding our connection string
+// builder.AddServiceDefaults();
 
 // Add services to the container.
 builder.Services.AddProblemDetails(options =>
@@ -69,19 +60,33 @@ builder.Services.AddCors(options =>
     });
 });
 
-// Configure PostgreSQL using external database (not Aspire-managed)
-// We're using an external PostgreSQL instance, so we'll rely on connection strings only
-
-// Register repositories using PostgreSQL
+// Register repositories using PostgreSQL (manual connection string)
 builder.Services.AddScoped<IProductRepository>(provider =>
 {
+    // Debug: Check all connection strings
+    var config = provider.GetService<IConfiguration>();
+    var allConnectionStrings = config.GetSection("ConnectionStrings").GetChildren();
+    var logger = provider.GetService<ILogger<Program>>();
+    
+    logger?.LogInformation("=== CONNECTION STRING DEBUG ===");
+    foreach (var cs in allConnectionStrings)
+    {
+        logger?.LogInformation("Found connection string '{Key}': {Value}", cs.Key, cs.Value);
+    }
+    
     var connectionString = builder.Configuration.GetConnectionString("productmanagement");
     if (string.IsNullOrEmpty(connectionString))
     {
         throw new InvalidOperationException("PostgreSQL connection string 'productmanagement' not found.");
     }
-    var logger = provider.GetService<ILogger<ProductRepository>>();
-    return new ProductRepository(connectionString, logger);
+    
+    // Debug logging for connection string
+    logger?.LogInformation("=== USING CONNECTION STRING ===");
+    logger?.LogInformation("Final connection string: {ConnectionString}", connectionString);
+    logger?.LogInformation("=== END DEBUG ===");
+    
+    var repoLogger = provider.GetService<ILogger<ProductRepository>>();
+    return new ProductRepository(connectionString, repoLogger);
 });
 
 builder.Services.AddScoped<IDatabaseInitializer>(provider =>
@@ -91,6 +96,11 @@ builder.Services.AddScoped<IDatabaseInitializer>(provider =>
     {
         throw new InvalidOperationException("PostgreSQL connection string 'productmanagement' not found.");
     }
+    
+    // Debug logging for connection string
+    var consoleLogger = provider.GetService<ILogger<Program>>();
+    consoleLogger?.LogInformation("Database initializer using connection string: {ConnectionString}", connectionString);
+    
     var logger = provider.GetService<ILogger<DatabaseInitializer>>();
     return new DatabaseInitializer(connectionString, logger);
 });
