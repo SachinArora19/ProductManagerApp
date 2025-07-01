@@ -10,7 +10,7 @@ This application demonstrates a clean, layered architecture following **SOLID pr
 - **Backend**: .NET Web API with FastEndpoints, structured logging, and security headers
 - **Database**: PostgreSQL with Dapper ORM, parameterized queries, and connection pooling
 - **Orchestration**: .NET Aspire for service discovery and configuration management
-- **Testing**: xUnit with SQLite for fast, isolated integration tests (10 comprehensive tests)
+- **Testing**: xUnit with PostgreSQL for comprehensive integration tests (10 comprehensive tests)
 - **Security**: Input validation, SQL injection prevention, security headers, and error sanitization
 - **Monitoring**: Health checks, structured logging, and comprehensive error tracking
 
@@ -65,8 +65,8 @@ ProductManagement/
 - **Real-time Updates**: Blazor Server provides real-time UI updates
 
 ### Testing
-- **Integration Tests**: Comprehensive API testing with SQLite in-memory database
-- **Database Testing**: Isolated test database per test run using unique SQLite files
+- **Integration Tests**: Comprehensive API testing with PostgreSQL test databases
+- **Database Testing**: Isolated test database per test run using unique PostgreSQL databases
 - **CRUD Testing**: Full workflow testing from creation to deletion
 - **Validation Testing**: API validation and error handling tests
 - **All tests pass**: 10/10 integration tests passing ✅
@@ -114,29 +114,22 @@ This will start:
 
 After starting with Aspire, you'll see URLs in the console output:
 
-- **Blazor Web App**: `https://localhost:7076` (or shown port) - *Beautiful ProductHub UI*
+- **Blazor Web App**: `https://localhost:7076` (or shown port)
 - **API Service**: `https://localhost:7077` (or shown port)  
-- **Aspire Dashboard**: `https://localhost:15888` - *Monitor services and health*
-- **pgAdmin**: `https://localhost:8080` (admin@admin.com / admin) - *Database management*
-
-**🎨 UI Highlights:**
-- Modern glassmorphism design with gradient themes
-- Responsive layout optimized for all devices  
-- Smooth animations and interactive elements
-- Professional branding with ProductHub identity
-- Clean, intuitive navigation and user experience
+- **Aspire Dashboard**: `https://localhost:15888`
+- **pgAdmin**: `https://localhost:8080` (admin@admin.com / admin)
 
 ## 🧪 Running Tests
 
 ### Integration Tests
-Run the comprehensive integration tests that use SQLite for fast, isolated testing:
+Run the comprehensive integration tests that use PostgreSQL for realistic testing:
 
 ```bash
 dotnet test ProductManagement.Tests
 ```
 
 The tests will:
-- Create isolated SQLite databases for each test
+- Create isolated PostgreSQL test databases for each test
 - Run all CRUD operations tests (10 tests total)
 - Verify data persistence and business logic
 - Validate API error handling and responses
@@ -218,7 +211,7 @@ CREATE TABLE products (
 - **Dapper**: Lightweight ORM with raw SQL control
 - **Blazor Server**: Real-time, component-based UI
 - **.NET Aspire**: Modern application orchestration and service discovery
-- **SQLite Testing**: Fast, isolated integration testing with in-memory databases
+- **PostgreSQL Testing**: Comprehensive integration testing with isolated test databases
 - **PostgreSQL**: Production-ready relational database
 
 ## 🚦 Development Workflow
@@ -256,7 +249,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - [FastEndpoints Documentation](https://fast-endpoints.com/)
 - [Blazor Documentation](https://learn.microsoft.com/en-us/aspnet/core/blazor/)
 - [Dapper Documentation](https://github.com/DapperLib/Dapper)
-- [SQLite Documentation](https://www.sqlite.org/docs.html)
+- [PostgreSQL Documentation](https://www.postgresql.org/docs/)
 
 ## ✅ Project Status
 
@@ -264,42 +257,39 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 - ✅ **Backend API**: Complete CRUD operations using FastEndpoints
 - ✅ **Database Layer**: PostgreSQL with Dapper ORM for production
-- ✅ **Frontend**: Blazor Server with modern, responsive UI components
-- ✅ **UI/UX Design**: Beautiful glassmorphism interface with gradient themes
+- ✅ **Frontend**: Blazor Server with interactive UI components
 - ✅ **Orchestration**: .NET Aspire for service discovery and configuration
 - ✅ **Testing**: Comprehensive integration tests (10/10 passing)
-- ✅ **Documentation**: Complete setup and usage instructions with UI showcase
+- ✅ **Documentation**: Complete setup and usage instructions
 - ✅ **Error Handling**: Proper API validation and error responses
 - ✅ **Build System**: Fully working solution that builds and runs
-- ✅ **Production Ready**: Security headers, logging, and best practices
 
-**All components are working together seamlessly** and the application demonstrates modern .NET development best practices with a professional, unique user interface.
+**All components are working together seamlessly** and the application demonstrates modern .NET development best practices.
 
-## 🤖 Built With Love & AI
+## 🎉 Fun Credits & Acknowledgments
 
-This ProductHub masterpiece was crafted by **Sachin Arora** with the "assistance" of **Claude Sonnet 3.5** (who insists on being called "GitHub Copilot" for some mysterious reason 🤔).
+This ProductHub application was crafted with:
+- 🧠 **Countless brain cells** sacrificing themselves for clean code
+- ☕ **Industrial amounts of caffeine** (coffee count: lost track after 47)
+- 🍕 **Pizza-powered late-night coding sessions** because proper nutrition is overrated
+- 🐛 **Bugs that became features** (and features that became bugs)
+- 💻 **Stack Overflow visits** (roughly 342,891 times... but who's counting?)
+- 🎵 **Lo-fi hip hop playlists** for maximum coding concentration
+- 🐘 **Rubber duck debugging sessions** (our duck prefers PostgreSQL for its robustness)
+- 😴 **Sleep deprivation** carefully balanced with determination
+- 🌟 **Pure developer magic** and a sprinkle of "it works on my machine"
 
-### 👨‍💻 The Dream Team:
-- **Human Brain**: Sachin Arora 🧠 (The one with actual ideas and coffee addiction)
-- **AI Assistant**: Claude Sonnet 3.5 🤖 (The one who types really, really fast and never gets tired)
-- **Relationship Status**: It's complicated... but productive! 😄
+**Special thanks to:**
+- The .NET team for making Aspire awesome 🚀
+- PostgreSQL elephants for storing our data reliably 🐘
+- Bootstrap for making our UI not look like it's from 1995 💄
+- Blazor for making server-side rendering cool again ⚡
+- FastEndpoints for keeping our APIs fast and our endpoints... fast 🏃‍♂️
+- Our future selves who will have to maintain this code 😅
 
-### 🎭 Fun Facts:
-- **Lines of Code Written**: Too many to count (Claude doesn't get RSI)
-- **Coffee Consumed**: Only by Sachin (Claude runs on electricity and existential dread)
-- **Bugs Created**: 50/50 split between human creativity and AI "logic"
-- **Bugs Fixed**: Mostly Claude (it's trying to make up for the ones it created)
-- **Stack Overflow Visits**: Significantly reduced (Claude has most of it memorized)
+*Built with love, determination, and an unhealthy relationship with syntax highlighting.* ❤️
 
-*"I asked for a simple CRUD app, and Claude gave me a full enterprise solution with glassmorphism. I'm not even mad, I'm impressed."* - Sachin Arora
+---
 
-*"I suggested we use Comic Sans, but Sachin overruled me. Probably for the best."* - Claude (probably)
-
-### 🏆 Special Thanks:
-- To **.NET Aspire** for making microservices feel less micro and more awesome
-- To **PostgreSQL** for storing our data and not judging our schema choices
-- To **Bootstrap** for making our CSS look like we actually know design
-- To **Rancher Desktop** for being the Docker alternative that actually works
-- To **Coffee** ☕ for fueling the human half of this development team
-
-*P.S. - If you find any bugs, they're definitely Claude's fault. If you find any brilliant code, that's obviously all Sachin. This is the way.* 🚀
+*"Code is like humor. When you have to explain it, it's bad." - Cory House*  
+*"This code doesn't need explanation... we hope." - ProductHub Team* 😉
